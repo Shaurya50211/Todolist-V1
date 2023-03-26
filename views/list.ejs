@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include("header") -%>
+<div class="box" id="heading">
+    <h1><%=listTitle%></h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TodoList</title>
-</head>
+</div>
 
-<body>
-    <h1><%=currentDOTW%></h1>
-
+<div class="box">
     <ul>
         <% for(let i = 0; i < newListItems.length; i++){ %>
-            <li><%=newListItems[i]%></li>
+        <% if(newListItems[i] != "") { %>
+        <div class="item">
+            <input type="checkbox">
+            <p><%=newListItems[i]%></p>
+        </div>
+        <% } %>
         <% } %>
     </ul>
 
-    <form action="/" method="post">
+    <form class="item" action="/" method="post">
         <input type="text" name="newItem" placeholder="Todo Item">
-        <button type="submit">Add</button>
+        <button type="submit" name="list" value=<%= listTitle %>>+</button>
     </form>
-</body>
+</div>
 
-</html>
+<%- include("footer") -%>
